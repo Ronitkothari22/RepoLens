@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+venv/
+
+# Secrets
+.env
+
+# Local ingestion temp data
+cloned_repos/
+
+# Tooling cache
+.pytest_cache/
+.mypy_cache/
