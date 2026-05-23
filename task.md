@@ -2,47 +2,47 @@
 
 ## Phase 1 — Project Scaffolding
 
-- [ ] Initialize project folder structure as per architecture
-- [ ] Create `requirements.txt` with all dependencies
-- [ ] Create `.env.example` with all required env vars (`GROQ_API_KEY`, `GEMINI_API_KEY`, `QDRANT_URL`, `QDRANT_API_KEY`, `NEO4J_URI`, `NEO4J_USER`, `NEO4J_PASSWORD`, `GITHUB_TOKEN`)
-- [ ] Create `config.py` to load and validate all env vars on startup
-- [ ] Add `.gitignore` (ignore `cloned_repos/`, `.env`, `__pycache__/`, `venv/`)
+- [x] Initialize project folder structure as per architecture
+- [x] Create `requirements.txt` with all dependencies
+- [x] Create `.env.example` with all required env vars (`GROQ_API_KEY`, `GEMINI_API_KEY`, `QDRANT_URL`, `QDRANT_API_KEY`, `NEO4J_URI`, `NEO4J_USER`, `NEO4J_PASSWORD`, `GITHUB_TOKEN`)
+- [x] Create `config.py` to load and validate all env vars on startup
+- [x] Add `.gitignore` (ignore `cloned_repos/`, `.env`, `__pycache__/`, `venv/`)
 
 ---
 
 ## Phase 2 — Ingestion Pipeline
 
 ### 2.1 Repo Cloner (`ingestion/cloner.py`)
-- [ ] Accept a GitHub URL as input
-- [ ] Clone the repo into a local temp directory using `gitpython`
-- [ ] Support both public and private repos (token-based auth via `GITHUB_TOKEN` env var)
-- [ ] Return the local path of the cloned repo
-- [ ] Clean up cloned repo from disk after ingestion is complete to save space
+- [x] Accept a GitHub URL as input
+- [x] Clone the repo into a local temp directory using `gitpython`
+- [x] Support both public and private repos (token-based auth via `GITHUB_TOKEN` env var)
+- [x] Return the local path of the cloned repo
+- [x] Clean up cloned repo from disk after ingestion is complete to save space
 
 ### 2.2 File Parser (`ingestion/parser.py`)
-- [ ] Walk the cloned repo directory recursively
-- [ ] Filter only code files by extension (`.py`, `.js`, `.ts`, `.go`, `.java`, `.cpp`, `.rs`, `.md`, etc.)
-- [ ] Skip irrelevant dirs: `node_modules/`, `.git/`, `dist/`, `build/`, `__pycache__/`, `venv/`
-- [ ] Read file content and store with metadata: `filepath`, `language`, `repo_name`
-- [ ] Detect language from file extension
+- [x] Walk the cloned repo directory recursively
+- [x] Filter only code files by extension (`.py`, `.js`, `.ts`, `.go`, `.java`, `.cpp`, `.rs`, `.md`, etc.)
+- [x] Skip irrelevant dirs: `node_modules/`, `.git/`, `dist/`, `build/`, `__pycache__/`, `venv/`
+- [x] Read file content and store with metadata: `filepath`, `language`, `repo_name`
+- [x] Detect language from file extension
 
 ### 2.3 AST Parser (`ingestion/ast_parser.py`)
-- [ ] Integrate `tree-sitter` for multi-language AST parsing
-- [ ] Extract functions, classes, and imports from each file
-- [ ] Build a per-file symbol table: `{file: {functions: [], classes: [], imports: []}}`
-- [ ] Gracefully fall back to raw text if tree-sitter fails for a language
-- [ ] Support at minimum: Python, JavaScript, TypeScript
+- [x] Integrate `tree-sitter` for multi-language AST parsing
+- [x] Extract functions, classes, and imports from each file
+- [x] Build a per-file symbol table: `{file: {functions: [], classes: [], imports: []}}`
+- [x] Gracefully fall back to raw text if tree-sitter fails for a language
+- [x] Support at minimum: Python, JavaScript, TypeScript
 
 ### 2.4 Chunker (`ingestion/chunker.py`)
-- [ ] Chunk by function/class boundaries (from AST output) — not arbitrary token windows
-- [ ] Fall back to `RecursiveCharacterTextSplitter` with code separators for unsupported langs
-- [ ] Set chunk size ~512 tokens, overlap ~50 tokens
-- [ ] Attach metadata to each chunk: `file`, `language`, `chunk_type` (function/class/module), `symbol_name`
+- [x] Chunk by function/class boundaries (from AST output) — not arbitrary token windows
+- [x] Fall back to `RecursiveCharacterTextSplitter` with code separators for unsupported langs
+- [x] Set chunk size ~512 tokens, overlap ~50 tokens
+- [x] Attach metadata to each chunk: `file`, `language`, `chunk_type` (function/class/module), `symbol_name`
 
 ### 2.5 Embedder (`ingestion/embedder.py`)
-- [ ] Load `nomic-ai/nomic-embed-text-v1.5` via `sentence-transformers` (local, free)
-- [ ] Batch embed all chunks
-- [ ] Return list of `(chunk_text, embedding_vector, metadata)` tuples
+- [x] Load `nomic-ai/nomic-embed-text-v1.5` via `sentence-transformers` (local, free)
+- [x] Batch embed all chunks
+- [x] Return list of `(chunk_text, embedding_vector, metadata)` tuples
 
 ---
 
