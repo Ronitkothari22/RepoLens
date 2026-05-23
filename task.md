@@ -32,6 +32,7 @@
 - [x] Build a per-file symbol table: `{file: {functions: [], classes: [], imports: []}}`
 - [x] Gracefully fall back to raw text if tree-sitter fails for a language
 - [x] Support at minimum: Python, JavaScript, TypeScript
+- [x] Extract call and inheritance relations for graph edges (`CALLS`, `INHERITS`)
 
 ### 2.4 Chunker (`ingestion/chunker.py`)
 - [x] Chunk by function/class boundaries (from AST output) — not arbitrary token windows
@@ -49,25 +50,25 @@
 ## Phase 3 — Storage Layer
 
 ### 3.1 Vector Store — Qdrant Cloud (`storage/vector_store.py`)
-- [ ] Connect to Qdrant Cloud using `QDRANT_URL` and `QDRANT_API_KEY` from env
-- [ ] Create a collection per repo (named by `repo_name`) with cosine distance metric and vector size 768 (nomic model output)
-- [ ] Check if collection already exists before creating — skip if so
-- [ ] Upsert chunks with embedding vectors and metadata payload
-- [ ] Implement `similarity_search(query_vector, repo_name, top_k=5)` returning chunks + scores
-- [ ] Implement `delete_collection(repo_name)` for cleanup
-- [ ] Implement `list_collections()` to list all ingested repos
+- [x] Connect to Qdrant Cloud using `QDRANT_URL` and `QDRANT_API_KEY` from env
+- [x] Create a collection per repo (named by `repo_name`) with cosine distance metric and vector size 768 (nomic model output)
+- [x] Check if collection already exists before creating — skip if so
+- [x] Upsert chunks with embedding vectors and metadata payload
+- [x] Implement `similarity_search(query_vector, repo_name, top_k=5)` returning chunks + scores
+- [x] Implement `delete_collection(repo_name)` for cleanup
+- [x] Implement `list_collections()` to list all ingested repos
 
 ### 3.2 Graph Store — Neo4j AuraDB (`storage/graph_store.py`)
-- [ ] Connect to Neo4j AuraDB using `NEO4J_URI`, `NEO4J_USER`, `NEO4J_PASSWORD` from env
-- [ ] Define node labels: `File`, `Function`, `Class`
-- [ ] Define relationship types: `IMPORTS`, `CALLS`, `DEFINES`, `INHERITS`
-- [ ] Add `repo_name` property to all nodes for multi-repo isolation
-- [ ] Build graph from AST parser symbol tables using Cypher `MERGE` (idempotent upserts)
-- [ ] Implement `get_neighbors(symbol_name, repo_name, depth=2)` using Cypher traversal
-- [ ] Implement `get_callers(function_name, repo_name)` — find what calls a function
-- [ ] Implement `get_callees(function_name, repo_name)` — find what a function calls
-- [ ] Implement `delete_repo_graph(repo_name)` to remove all nodes for a repo
-- [ ] Close driver connection cleanly on shutdown
+- [x] Connect to Neo4j AuraDB using `NEO4J_URI`, `NEO4J_USER`, `NEO4J_PASSWORD` from env
+- [x] Define node labels: `File`, `Function`, `Class`
+- [x] Define relationship types: `IMPORTS`, `CALLS`, `DEFINES`, `INHERITS`
+- [x] Add `repo_name` property to all nodes for multi-repo isolation
+- [x] Build graph from AST parser symbol tables using Cypher `MERGE` (idempotent upserts)
+- [x] Implement `get_neighbors(symbol_name, repo_name, depth=2)` using Cypher traversal
+- [x] Implement `get_callers(function_name, repo_name)` — find what calls a function
+- [x] Implement `get_callees(function_name, repo_name)` — find what a function calls
+- [x] Implement `delete_repo_graph(repo_name)` to remove all nodes for a repo
+- [x] Close driver connection cleanly on shutdown
 
 ---
 
