@@ -90,10 +90,10 @@
 ## Phase 5 — LLM Pipelines
 
 ### 5.1 Project Summarizer (`pipeline/summarizer.py`)
-- [ ] Collect: README, entry-point files, `package.json`/`requirements.txt`/`Cargo.toml`, directory tree
-- [ ] Build a structured prompt with all collected context
-- [ ] Call Gemini Flash API (free tier) for long-context summarization
-- [ ] Parse and return structured summary:
+- [x] Collect: README, entry-point files, `package.json`/`requirements.txt`/`Cargo.toml`, directory tree
+- [x] Build a structured prompt with all collected context
+- [x] Call Gemini Flash API (free tier) for long-context summarization
+- [x] Parse and return structured summary:
   - Project purpose
   - Tech stack
   - Architecture overview
@@ -101,16 +101,16 @@
   - Notable patterns or design choices
 
 ### 5.2 Q&A Chain (`pipeline/qa.py`)
-- [ ] Accept `query` and `repo_name` as inputs
-- [ ] Call `hybrid_search` to retrieve relevant chunks
-- [ ] Build prompt: system context + retrieved chunks + user question
-- [ ] Call Groq API (Llama 3.1 70B, free tier) for answer generation
-- [ ] Return answer with source file references
+- [x] Accept `query` and `repo_name` as inputs
+- [x] Call `hybrid_search` to retrieve relevant chunks
+- [x] Build prompt: system context + retrieved chunks + user question
+- [x] Call Groq API (Llama 3.1 70B, free tier) for answer generation
+- [x] Return answer with source file references
 
 ### 5.3 LLM Client (`pipeline/llm_client.py`)
-- [ ] Groq client wrapper with retry logic and error handling
-- [ ] Gemini client wrapper with retry logic and error handling
-- [ ] Single `call_llm(prompt, task_type)` interface — routes to Groq for Q&A, Gemini for summarization
+- [x] Groq client wrapper with retry logic and error handling
+- [x] Gemini client wrapper with retry logic and error handling
+- [x] Single `call_llm(prompt, task_type)` interface — routes to Groq for Q&A, Gemini for summarization
 
 ---
 
