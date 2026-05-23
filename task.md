@@ -131,13 +131,13 @@
 ## Phase 7 — Frontend (Streamlit MVP)
 
 ### 7.1 UI (`ui/app.py`)
-- [ ] Input field for GitHub URL + "Ingest" button
-- [ ] Show ingestion progress / spinner
-- [ ] Display project summary card after ingestion
-- [ ] Dropdown to select ingested repo
-- [ ] Chat-style Q&A interface with message history
-- [ ] Show source file references alongside answers
-- [ ] Basic session state management
+- [x] Input field for GitHub URL + "Ingest" button
+- [x] Show ingestion progress / spinner
+- [x] Display project summary card after ingestion
+- [x] Dropdown to select ingested repo
+- [x] Chat-style Q&A interface with message history
+- [x] Show source file references alongside answers
+- [x] Basic session state management
 
 ---
 
