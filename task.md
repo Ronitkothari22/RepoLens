@@ -117,14 +117,14 @@
 ## Phase 6 — API Layer
 
 ### 6.1 FastAPI Backend (`api/main.py`)
-- [ ] `POST /ingest` — accepts `{ "github_url": "..." }`, runs full ingestion pipeline as background task, returns job status
-- [ ] `GET /summary/{repo_name}` — returns cached project summary
-- [ ] `POST /ask` — accepts `{ "repo_name": "...", "question": "..." }`, returns answer + sources
-- [ ] `GET /repos` — list all ingested repos (from Qdrant collections)
-- [ ] `DELETE /repos/{repo_name}` — delete repo data from both Qdrant and Neo4j
-- [ ] Add background task support for ingestion (non-blocking)
-- [ ] Add basic error handling and validation with Pydantic models
-- [ ] Health check endpoint `GET /health` — verifies Qdrant and Neo4j connections
+- [x] `POST /ingest` — accepts `{ "github_url": "..." }`, runs full ingestion pipeline as background task, returns job status
+- [x] `GET /summary/{repo_name}` — returns cached project summary
+- [x] `POST /ask` — accepts `{ "repo_name": "...", "question": "..." }`, returns answer + sources
+- [x] `GET /repos` — list all ingested repos (from Qdrant collections)
+- [x] `DELETE /repos/{repo_name}` — delete repo data from both Qdrant and Neo4j
+- [x] Add background task support for ingestion (non-blocking)
+- [x] Add basic error handling and validation with Pydantic models
+- [x] Health check endpoint `GET /health` — verifies Qdrant and Neo4j connections
 
 ---
 
