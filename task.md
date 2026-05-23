@@ -75,7 +75,7 @@
 ## Phase 4 — Hybrid Retriever
 
 ### 4.1 Hybrid Retrieval (`retrieval/hybrid.py`)
-- [ ] Implement `hybrid_search(query, repo_name, top_k=8)`:
+- [x] Implement `hybrid_search(query, repo_name, top_k=8)`:
   - Embed the query using the same `nomic-embed-text-v1.5` model
   - Run vector similarity search on Qdrant → get top-k chunks with scores
   - Extract `symbol_name` from each returned chunk's metadata
@@ -83,7 +83,7 @@
   - Fetch neighbor chunks from Qdrant by filtering on `symbol_name` metadata
   - Merge and deduplicate all chunks
   - Re-rank by weighted score: vector similarity score + small boost for graph-connected chunks
-- [ ] Return final ranked list of chunks with metadata (file, symbol, score)
+- [x] Return final ranked list of chunks with metadata (file, symbol, score)
 
 ---
 
